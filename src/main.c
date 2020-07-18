@@ -19,6 +19,9 @@
 #include <sys/printk.h>
 #include "lambdachip.h"
 
+GLOBAL_DEF(bool, vm_verbose) = true;
+GLOBAL_DEF(bool, vm_execute) = false;
+
 void main(void)
 {
   /* TODO:
