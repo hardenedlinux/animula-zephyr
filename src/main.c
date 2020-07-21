@@ -15,14 +15,15 @@
  *  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <zephyr.h>
-#include <sys/printk.h>
 #include "lambdachip.h"
+#include <sys/printk.h>
+#include <zephyr.h>
 
-GLOBAL_DEF(bool, vm_verbose) = true;
-GLOBAL_DEF(bool, vm_execute) = false;
+GLOBAL_DEF (bool, vm_verbose) = true;
+GLOBAL_DEF (bool, vm_execute) = false;
 
-void main(void)
+void
+main (void)
 {
   /* TODO:
    * 1. Add a REPL shell (include an interpreter)
@@ -30,6 +31,6 @@ void main(void)
    * 3. Add a special naming convention, if VM detect them then autorun
    * 4. Add online DEBUG
    */
-  printk("Platform: zephyr on %s\n", CONFIG_BOARD);
-  lambdachip_start();
+  printk ("Platform: zephyr on %s\n", CONFIG_BOARD);
+  lambdachip_start ();
 }
