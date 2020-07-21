@@ -22,8 +22,7 @@
 GLOBAL_DEF (bool, vm_verbose) = true;
 GLOBAL_DEF (bool, vm_execute) = false;
 
-void
-main (void)
+void main (void)
 {
   /* TODO:
    * 1. Add a REPL shell (include an interpreter)
