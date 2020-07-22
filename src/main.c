@@ -22,6 +22,13 @@
 GLOBAL_DEF (bool, vm_verbose) = true;
 GLOBAL_DEF (bool, vm_execute) = false;
 
+/* TODO:
+ * Configure these size when building
+ */
+GLOBAL_DEF (size_t, VM_CODESEG_SIZE) = 8192;
+GLOBAL_DEF (size_t, VM_DATASEG_SIZE) = 0;
+GLOBAL_DEF (size_t, VM_STKSEG_SIZE) = 1024;
+
 void main (void)
 {
   /* TODO:
