@@ -6,6 +6,7 @@ include($ENV{ZEPHYR_BASE}/cmake/app/boilerplate.cmake NO_POLICY_SCOPE)
 project(lambdachip)
 
 add_definitions(-DLAMBDACHIP_ZEPHYR -DLAMBDACHIP_DEBUG)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os -Wall -Wno-pointer-arith")
 include_directories(lambdachip/inc)
 target_sources(app PRIVATE
   lambdachip/lambdachip.c
