@@ -9,16 +9,19 @@ add_definitions(-DLAMBDACHIP_ZEPHYR -DLAMBDACHIP_DEBUG)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os -Wall -Wno-pointer-arith")
 include_directories(lambdachip/inc)
 target_sources(app PRIVATE
-  lambdachip/lambdachip.c
-  lambdachip/object.c
-  lambdachip/values.c
-  lambdachip/memory.c
-  lambdachip/primitives.c
-  lambdachip/shell.c
-  lambdachip/lib.c
+  lambdachip/closure.c
   lambdachip/lef.c
-  lambdachip/stdio.c
+  lambdachip/memory.c
+  lambdachip/print.c
   lambdachip/storage.c
   lambdachip/gc.c
+  lambdachip/lib.c
+  lambdachip/object.c
+  lambdachip/shell.c
+  lambdachip/vector.c
+  lambdachip/lambdachip.c
+  lambdachip/list.c
+  lambdachip/primitives.c
+  lambdachip/stdio.c
   lambdachip/vm.c
   src/main.c)
