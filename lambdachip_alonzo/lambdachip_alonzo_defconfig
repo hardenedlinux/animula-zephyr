@@ -30,8 +30,7 @@ CONFIG_CLOCK_STM32_HSE_CLOCK=24000000
 CONFIG_CLOCK_STM32_SYSCLK_SRC_PLL=y
 # use HSE as PLL input
 CONFIG_CLOCK_STM32_PLL_SRC_HSE=y
-# however, the board does not have an external oscillator, so just use
-# the 8MHz clock signal coming from integrated STLink
+# however, the board has an 24MHz external oscillator
 CONFIG_CLOCK_STM32_HSE_BYPASS=n
 
 # produce 96MHz clock at PLL output
