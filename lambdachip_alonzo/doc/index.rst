@@ -1,44 +1,37 @@
-.. _nucleo_f411re_board:
+.. _nucleo_F411CE_board:
 
-ST Nucleo F411RE
-################
+Lambdachip Alonzo
+#################
 
 Overview
 ********
 
-The Nucleo F411RE board features an ARM Cortex-M4 based STM32F411RE MCU
+The Lambdachip Alonzo board features an ARM Cortex-M4 based STM32F411CE MCU
 with a wide range of connectivity support and configurations. Here are
-some highlights of the Nucleo F411RE board:
+some highlights of the Nucleo F411CE board:
 
-- STM32 microcontroller in QFP64 package
-- Two types of extension resources:
+- STM32 microcontroller in UFQFN48 package
+- It comes out with these resources:
+  - 2.54 Header connecters
+  - Bluetooth 4.0 BLE
 
-  - Arduino Uno V3 connectivity
-  - ST morpho extension pin headers for full access to all STM32 I/Os
+- Four user LEDs: D2, D3, D4, D5
+- 3 push-buttons: BOOT0, RST, USER BUTTON
 
-- On-board ST-LINK/V2-1 debugger/programmer with SWD connector
-- Flexible board power supply:
-
-  - USB VBUS or external source(3.3V, 5V, 7 - 12V)
-  - Power management access point
-
-- Three LEDs: USB communication (LD1), user LED (LD2), power LED (LD3)
-- Two push-buttons: USER and RESET
-
-.. image:: img/nucleo_f411re.png
+.. image:: img/lambdachip_alonzo.png
    :width: 720px
    :align: center
    :height: 720px
-   :alt: Nucleo F411RE
+   :alt: Lambdachip Alonzo F411CE
 
-More information about the board can be found at the `Nucleo F411RE website`_.
+More information about the board can be found at the `lambdachip website/alonzo`_.
 
 Hardware
 ********
 
-Nucleo F411RE provides the following hardware components:
+Nucleo F411CE provides the following hardware components:
 
-- STM32F411RET6 in LQFP64 package
+- STM32F411CET6 in UFQFN48 package
 - ARM |reg| 32-bit Cortex |reg|-M4 CPU with FPU
 - 100 MHz max CPU frequency
 - VDD from 1.7 V to 3.6 V
@@ -58,15 +51,15 @@ Nucleo F411RE provides the following hardware components:
 - DMA Controller
 - CRC calculation unit
 
-More information about STM32F411RE can be found here:
+More information about STM32F411CE can be found here:
 
-- `STM32F411RE on www.st.com`_
+- `STM32F411CE on www.st.com`_
 - `STM32F411 reference manual`_
 
 Supported Features
 ==================
 
-The Zephyr nucleo_f411re board configuration supports the following hardware features:
+The Zephyr nucleo_f411ce board configuration supports the following hardware features:
 
 +-----------+------------+-------------------------------------+
 | Interface | Controller | Driver/Component                    |
@@ -89,35 +82,35 @@ The Zephyr nucleo_f411re board configuration supports the following hardware fea
 Other hardware features are not yet supported on this Zephyr port.
 
 The default configuration can be found in the defconfig file:
-``boards/arm/nucleo_f411re/nucleo_f411re_defconfig``
+``boards/arm/nucleo_f411ce/nucleo_f411ce_defconfig``
 
 
 Connections and IOs
 ===================
 
-Nucleo F411RE Board has 8 GPIO controllers. These controllers are responsible for pin muxing,
+Nucleo F411CE Board has 8 GPIO controllers. These controllers are responsible for pin muxing,
 input/output, pull-up, etc.
 
 Available pins:
 ---------------
-.. image:: img/nucleo_f411re_arduino.png
+.. image:: img/nucleo_f411ce_arduino.png
    :width: 720px
    :align: center
    :height: 540px
-   :alt: Nucleo F411RE Arduino connectors
-.. image:: img/nucleo_f411re_morpho.png
+   :alt: Nucleo F411CE Arduino connectors
+.. image:: img/nucleo_f411ce_morpho.png
    :width: 720px
    :align: center
    :height: 540px
-   :alt: Nucleo F411RE Morpho connectors
+   :alt: Nucleo F411CE Morpho connectors
 
 For mode details please refer to `STM32 Nucleo-64 board User Manual`_.
 
 Default Zephyr Peripheral Mapping:
 ----------------------------------
 
-- UART_1 TX/RX : PB6/PB7
-- UART_2 TX/RX : PA2/PA3 (ST-Link Virtual Port Com)
+- UART_1 TX/RX : PB9/PA10
+- UART_2 TX/RX : PA2/PA3 (For BLE)
 - I2C1 SCL/SDA : PB8/PB9 (Arduino I2C)
 - I2C2 SCL/SDA : PB10/PB3
 - I2C1 SCL/SDA : PA8/B4
@@ -129,31 +122,31 @@ Default Zephyr Peripheral Mapping:
 System Clock
 ------------
 
-Nucleo F411RE System Clock could be driven by internal or external oscillator,
+Nucleo F411CE System Clock could be driven by internal or external oscillator,
 as well as main PLL clock. By default System clock is driven by PLL clock at 84MHz,
 driven by 8MHz high speed external clock.
 
 Serial Port
 -----------
 
-Nucleo F411RE board has 3 UARTs. The Zephyr console output is assigned to UART2.
+Nucleo F411CE board has 3 UARTs. The Zephyr console output is assigned to UART2.
 Default settings are 115200 8N1.
 
 
 Programming and Debugging
 *************************
 
-Applications for the ``nucleo_f411re`` board configuration can be built and
+Applications for the ``nucleo_f411ce`` board configuration can be built and
 flashed in the usual way (see :ref:`build_an_application` and
 :ref:`application_run` for more details).
 
 Flashing
 ========
 
-Nucleo F411RE board includes an ST-LINK/V2-1 embedded debug tool interface.
+Nucleo F411CE board includes an ST-LINK/V2-1 embedded debug tool interface.
 This interface is supported by the openocd version included in Zephyr SDK.
 
-Flashing an application to Nucleo F411RE
+Flashing an application to Nucleo F411CE
 ----------------------------------------
 
 Here is an example for the :ref:`hello_world` application.
@@ -168,7 +161,7 @@ Build and flash the application:
 
 .. zephyr-app-commands::
    :zephyr-app: samples/hello_world
-   :board: nucleo_f411re
+   :board: nucleo_f411ce
    :goals: build flash
 
 You should see the following message on the console:
@@ -185,18 +178,11 @@ You can debug an application in the usual way.  Here is an example for the
 
 .. zephyr-app-commands::
    :zephyr-app: samples/hello_world
-   :board: nucleo_f411re
+   :board: lambdachip_alonzo
    :maybe-skip-config:
    :goals: debug
 
-.. _Nucleo F411RE website:
-   http://www.st.com/en/evaluation-tools/nucleo-f411re.html
+.. _lambdachip website/alonzo:
+   http://lambdachip.com/alonzo
 
-.. _STM32 Nucleo-64 board User Manual:
-   http://www.st.com/resource/en/user_manual/dm00105823.pdf
 
-.. _STM32F411RE on www.st.com:
-   http://www.st.com/en/microcontrollers/stm32f411re.html
-
-.. _STM32F411 reference manual:
-   http://www.st.com/resource/en/reference_manual/dm00119316.pdf
