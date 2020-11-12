@@ -1,0 +1,8 @@
+# Lambdachip Alonzo board configuration
+
+# Copyright (c) 2020 Lambdachip
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_LAMBDACHIP_ALONZO
+	bool "Lambdachip Alonzo Board"
+	depends on SOC_STM32F411XE
