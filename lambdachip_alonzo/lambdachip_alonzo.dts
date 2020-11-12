@@ -74,6 +74,10 @@
 	status = "okay";
 };
 
+&usbotg_fs {
+	status = "okay";
+};
+
 
 &spi1 {
 	status = "okay";
