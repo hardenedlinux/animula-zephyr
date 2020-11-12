@@ -12,7 +12,7 @@
 
 / {
 	model = "Lambdachip Alonzo";
-	compatible = "st,stm32f411re", "st,stm32f411";
+	compatible = "st,stm32f411";
 
 	chosen {
 		zephyr,console = &usart1;
@@ -79,13 +79,13 @@
 	status = "okay";
 	/* cs-gpios = <&porta 27 GPIO_ACTIVE_LOW>; */
 
-	sdhc0: sdhc@0 {
+/* 	sdhc0: sdhc@0 {
 			compatible = "zephyr,mmc-spi-slot";
 			reg = <0>;
 			status = "okay";
 			label = "SDHC0";
 			spi-max-frequency = <24000000>;
-	};
+	}; */
 };
 
 

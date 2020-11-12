@@ -6,11 +6,11 @@
 if BOARD_LAMBDACHIP_ALONZO
 
 config BOARD
-	default "alonzo"
+	default "lambdachip_alonzo"
 
 if UART_CONSOLE
 
-config UART_2
+config UART_1
 	default y
 
 endif # UART_CONSOLE
