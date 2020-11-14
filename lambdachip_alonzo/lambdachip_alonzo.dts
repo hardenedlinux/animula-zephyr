@@ -6,6 +6,7 @@
 
 /dts-v1/;
 #include <st/f4/stm32f411Xe.dtsi>
+#include <st/f4/stm32f411r(c-e)tx-pinctrl.dtsi>
 /* #include "arduino_r3_connector.dtsi" */
 
 /* Alonzo v0.0.5 */
@@ -60,11 +61,13 @@
 };
 
 &usart1 {
+	pinctrl-0 = <&usart1_tx_pa9 &usart1_rx_pa10>;
 	current-speed = <115200>;
 	status = "okay";
 };
 
 &usart2 {
+	pinctrl-0 = <&usart2_tx_pa2 &usart2_rx_pa3>;
 	current-speed = <115200>;
 	status = "okay";
 };
@@ -102,18 +105,18 @@
 	status = "okay";
 };
 
-
 &spi1 {
+	pinctrl-0 = <&spi1_nss_pa4 &spi1_sck_pa5
+				&spi1_miso_pa6 &spi1_mosi_pa7>;
 	status = "okay";
-	/* cs-gpios = <&porta 27 GPIO_ACTIVE_LOW>; */
 
-/* 	sdhc0: sdhc@0 {
+	sdhc0: sdhc@0 {
 			compatible = "zephyr,mmc-spi-slot";
 			reg = <0>;
 			status = "okay";
 			label = "SDHC0";
 			spi-max-frequency = <24000000>;
-	}; */
+	};
 };
 
 
@@ -133,8 +136,8 @@
  */
 
 
-/* PA4 TF_DETECT */
-/* PA6 SDIO_CMD, SPI1_MISO */
-/* PB15 SDIO_CK, SPI2_MOSI */
-/* PB7 SDIO_D0 */
+/* PA4, pin14, SPI1_NSS -> CD/DAT3/CS */
+/* PA5, pin15, SPI1_SCK -> CLK/SCLK */
+/* PA6, pin16, SPI1_MISO -> DAT0/DO */
+/* PA7, pin17, SPI1_MOSI -> CMD/DI */
 
