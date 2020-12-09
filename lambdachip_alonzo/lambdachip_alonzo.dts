@@ -38,7 +38,7 @@
 			label = "User LED2";
 		};
 		led_3: led_3 {
-			gpios = <&gpioa 8 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpioa 15 GPIO_ACTIVE_HIGH>;
 			label = "User LED3";
 		};
 
@@ -48,7 +48,7 @@
 		/* defined in zephyr/dts/bindings/gpio/gpio-leds.yaml */
 		compatible = "gpio-leds";
 		ble_disable_1: ble_disable_0 {
-			gpios = <&gpioa 0 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpiob 2 GPIO_ACTIVE_HIGH>;
 			label = "Switch BLE disable";
 		};
 	};
