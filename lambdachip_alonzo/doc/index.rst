@@ -1,4 +1,4 @@
-.. _nucleo_F411CE_board:
+.. _LambdaChip_Alonzo_board:
 
 Lambdachip Alonzo
 #################
@@ -8,7 +8,7 @@ Overview
 
 The Lambdachip Alonzo board features an ARM Cortex-M4 based STM32F411CE MCU
 with a wide range of connectivity support and configurations. Here are
-some highlights of the Nucleo F411CE board:
+some highlights of the LambdaChip Alonzo board:
 
 - STM32 microcontroller in UFQFN48 package
 - It comes out with these resources:
@@ -29,7 +29,7 @@ More information about the board can be found at the `lambdachip website/alonzo`
 Hardware
 ********
 
-Nucleo F411CE provides the following hardware components:
+LambdaChip Alonzo F411CE provides the following hardware components:
 
 - STM32F411CET6 in UFQFN48 package
 - ARM |reg| 32-bit Cortex |reg|-M4 CPU with FPU
@@ -39,7 +39,6 @@ Nucleo F411CE provides the following hardware components:
 - 128 KB SRAM
 - GPIO with external interrupt capability
 - 12-bit ADC with 16 channels, with FIFO and burst support
-- RTC
 - 8 General purpose timers
 - 2 watchdog timers (independent and window)
 - SysTick timer
@@ -59,7 +58,7 @@ More information about STM32F411CE can be found here:
 Supported Features
 ==================
 
-The Zephyr nucleo_f411ce board configuration supports the following hardware features:
+The Zephyr lambdachip_alonzo board configuration supports the following hardware features:
 
 +-----------+------------+-------------------------------------+
 | Interface | Controller | Driver/Component                    |
@@ -67,8 +66,6 @@ The Zephyr nucleo_f411ce board configuration supports the following hardware fea
 | NVIC      | on-chip    | nested vector interrupt controller  |
 +-----------+------------+-------------------------------------+
 | UART      | on-chip    | serial port                         |
-+-----------+------------+-------------------------------------+
-| PINMUX    | on-chip    | pinmux                              |
 +-----------+------------+-------------------------------------+
 | GPIO      | on-chip    | gpio                                |
 +-----------+------------+-------------------------------------+
@@ -82,29 +79,15 @@ The Zephyr nucleo_f411ce board configuration supports the following hardware fea
 Other hardware features are not yet supported on this Zephyr port.
 
 The default configuration can be found in the defconfig file:
-``boards/arm/nucleo_f411ce/nucleo_f411ce_defconfig``
+``boards/arm/lambdachip_alonzo/lambdachip_alonzo_defconfig``
 
 
 Connections and IOs
 ===================
 
-Nucleo F411CE Board has 8 GPIO controllers. These controllers are responsible for pin muxing,
+LambdaChip Alonzo F411CE Board has 8 GPIO controllers. These controllers are responsible for pin muxing,
 input/output, pull-up, etc.
 
-Available pins:
----------------
-.. image:: img/nucleo_f411ce_arduino.png
-   :width: 720px
-   :align: center
-   :height: 540px
-   :alt: Nucleo F411CE Arduino connectors
-.. image:: img/nucleo_f411ce_morpho.png
-   :width: 720px
-   :align: center
-   :height: 540px
-   :alt: Nucleo F411CE Morpho connectors
-
-For mode details please refer to `STM32 Nucleo-64 board User Manual`_.
 
 Default Zephyr Peripheral Mapping:
 ----------------------------------
@@ -122,53 +105,23 @@ Default Zephyr Peripheral Mapping:
 System Clock
 ------------
 
-Nucleo F411CE System Clock could be driven by internal or external oscillator,
-as well as main PLL clock. By default System clock is driven by PLL clock at 84MHz,
-driven by 8MHz high speed external clock.
+LambdaChip Alonzo System Clock is driven by external oscillator,
+as well as main PLL clock. By default System clock is driven by PLL clock at 96MHz,
+driven by 24MHz high speed external clock.
 
 Serial Port
 -----------
 
-Nucleo F411CE board has 3 UARTs. The Zephyr console output is assigned to UART2.
+LambdaChip Alonzo board has 3 UARTs. The Zephyr console output is assigned to UART1.
 Default settings are 115200 8N1.
 
 
 Programming and Debugging
 *************************
 
-Applications for the ``nucleo_f411ce`` board configuration can be built and
+Applications for the ``lambdachip_alonzo`` board configuration can be built and
 flashed in the usual way (see :ref:`build_an_application` and
 :ref:`application_run` for more details).
-
-Flashing
-========
-
-Nucleo F411CE board includes an ST-LINK/V2-1 embedded debug tool interface.
-This interface is supported by the openocd version included in Zephyr SDK.
-
-Flashing an application to Nucleo F411CE
-----------------------------------------
-
-Here is an example for the :ref:`hello_world` application.
-
-Run a serial host program to connect with your Nucleo board.
-
-.. code-block:: console
-
-   $ minicom -D /dev/ttyACM0
-
-Build and flash the application:
-
-.. zephyr-app-commands::
-   :zephyr-app: samples/hello_world
-   :board: nucleo_f411ce
-   :goals: build flash
-
-You should see the following message on the console:
-
-.. code-block:: console
-
-   $ Hello World! arm
 
 Debugging
 =========
@@ -183,6 +136,6 @@ You can debug an application in the usual way.  Here is an example for the
    :goals: debug
 
 .. _lambdachip website/alonzo:
-   http://lambdachip.com/alonzo
+   http://lambdachip.com/
 
 
