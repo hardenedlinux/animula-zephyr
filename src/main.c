@@ -31,6 +31,9 @@ GLOBAL_DEF (size_t, VM_STKSEG_SIZE) = 1024;
 
 void main (void)
 {
+  // set BLE module to transparent send mode
+  printk ("\r\nAT+AUTO+++=Y\r\n");
+
   /* TODO:
    * 1. Add a REPL shell (include an interpreter)
    * 2. Load file from storage
