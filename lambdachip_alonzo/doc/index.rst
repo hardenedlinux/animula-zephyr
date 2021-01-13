@@ -1,12 +1,12 @@
 .. _LambdaChip_Alonzo_board:
 
-Lambdachip Alonzo
+LambdaChip Alonzo
 #################
 
 Overview
 ********
 
-The Lambdachip Alonzo board features an ARM Cortex-M4 based STM32F411CE MCU
+The LambdaChip Alonzo board features an ARM Cortex-M4 based STM32F411CE MCU
 with a wide range of connectivity support and configurations. Here are
 some highlights of the LambdaChip Alonzo board:
 
@@ -22,7 +22,7 @@ some highlights of the LambdaChip Alonzo board:
    :width: 720px
    :align: center
    :height: 720px
-   :alt: Lambdachip Alonzo F411CE
+   :alt: LambdaChip Alonzo F411CE
 
 More information about the board can be found at the `lambdachip website/alonzo`_.
 

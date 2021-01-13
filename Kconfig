@@ -1,14 +1,14 @@
-# Lambdachip configuration options
+# LambdaChip configuration options
 
-# Copyright (c) 2020 Lambdachip
+# Copyright (c) 2020-2021 LambdaChip
 
 # SPDX-License-Identifier: LGPL-3.0
 
 module = LAMBDACHIP
 config MAXIMUM_NUMBER_OPEN_FILE_DESCRIPTOR
-	int "Max file descriptor of open files in Lambdachip"
+	int "Max file descriptor of open files in LambdaChip"
 	default 64
 	help
-	  "Max file descriptor of open files in Lambdachip"
+	  "Max file descriptor of open files in LambdaChip"
 
 source "Kconfig.zephyr"

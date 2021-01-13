@@ -1,6 +1,6 @@
-# Lambdachip Alonzo board configuration
+# LambdaChip Alonzo board configuration
 
-# Copyright (c) 2020 Lambdachip
+# Copyright (c) 2020-2021 LambdaChip
 # SPDX-License-Identifier: Apache-2.0
 
 if BOARD_LAMBDACHIP_ALONZO
