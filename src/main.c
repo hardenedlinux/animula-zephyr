@@ -16,6 +16,7 @@
  */
 
 #include "lambdachip.h"
+#include "vos.h"
 #include <sys/printk.h>
 #include <zephyr.h>
 
@@ -30,55 +31,50 @@ GLOBAL_DEF (size_t, VM_DATASEG_SIZE) = 0;
 GLOBAL_DEF (size_t, VM_STKSEG_SIZE) = 1024;
 
 #define DEFAULT_LEF "/SD:/program.lef"
-#define BUF_SIZE    512
+
+#define LEF_LOADER load_lef_from_tf
+GLOBAL_DEF (struct device *, dev_led0) = NULL;
+GLOBAL_DEF (struct device *, dev_led1) = NULL;
+GLOBAL_DEF (struct device *, dev_led2) = NULL;
+GLOBAL_DEF (struct device *, dev_led3) = NULL;
 
 #if defined BOARD_LAMBDACHIP_ALONZO
-#  define LEF_LOADER load_lef_from_tf
-GLOBAL_DEF (const struct device *, dev_led0) = device_get_binding (LED0);
-GLOBAL_DEF (const struct device *, dev_led1) = device_get_binding (LED1);
-GLOBAL_DEF (const struct device *, dev_led2) = device_get_binding (LED2);
-GLOBAL_DEF (const struct device *, dev_led3) = device_get_binding (LED3);
-
 static void init_alonzo (void)
 {
-  int ret = 0;
-  /* Set LED pin as output */
-  ret
-    = gpio_pin_configure (dev_led0, LED0_PIN, GPIO_OUTPUT_ACTIVE | LED0_FLAGS);
-  if (ret < 0)
-    {
-      return;
-    }
-  ret
-    = gpio_pin_configure (dev_led1, LED1_PIN, GPIO_OUTPUT_ACTIVE | LED1_FLAGS);
-  if (ret < 0)
-    {
-      return;
-    }
-  ret
-    = gpio_pin_configure (dev_led2, LED2_PIN, GPIO_OUTPUT_ACTIVE | LED2_FLAGS);
-  if (ret < 0)
-    {
-      return;
-    }
-  ret
-    = gpio_pin_configure (dev_led3, LED3_PIN, GPIO_OUTPUT_ACTIVE | LED3_FLAGS);
-  if (ret < 0)
-    {
-      return;
-    }
+  const struct device *dev_led0 = GLOBAL_REF (dev_led0);
+  const struct device *dev_led1 = GLOBAL_REF (dev_led1);
+  const struct device *dev_led2 = GLOBAL_REF (dev_led2);
+  const struct device *dev_led3 = GLOBAL_REF (dev_led3);
 
-  gpio_pin_set (dev_led0, LED0_PIN, 1);
-  gpio_pin_set (dev_led1, LED1_PIN, 1);
-  gpio_pin_set (dev_led2, LED2_PIN, 1);
-  gpio_pin_set (dev_led3, LED3_PIN, 1);
+  dev_led0 = device_get_binding (LED0);
+  dev_led1 = device_get_binding (LED1);
+  dev_led2 = device_get_binding (LED2);
+  dev_led3 = device_get_binding (LED3);
+
+  /* Set LED pin as output */
+  assert (
+    gpio_pin_configure (dev_led0, LED0_PIN, GPIO_OUTPUT_ACTIVE | LED0_FLAGS)
+    >= 0);
+  assert (
+    gpio_pin_configure (dev_led1, LED1_PIN, GPIO_OUTPUT_ACTIVE | LED1_FLAGS)
+    >= 0);
+  assert (
+    gpio_pin_configure (dev_led2, LED2_PIN, GPIO_OUTPUT_ACTIVE | LED2_FLAGS)
+    >= 0);
+  assert (
+    gpio_pin_configure (dev_led3, LED3_PIN, GPIO_OUTPUT_ACTIVE | LED3_FLAGS)
+    >= 0);
+
+  gpio_pin_set (GLOBAL_REF (dev_led0), LED0_PIN, 1);
+  gpio_pin_set (GLOBAL_REF (dev_led1), LED1_PIN, 1);
+  gpio_pin_set (GLOBAL_REF (dev_led2), LED2_PIN, 1);
+  gpio_pin_set (GLOBAL_REF (dev_led3), LED3_PIN, 1);
 }
 #endif
 
 static lef_t load_lef_from_tf (void)
 {
   lef_t lef = NULL;
-  u8_t buf[BUF_SIZE] = {0};
 
   if (0 != mount_disk ())
     {
@@ -108,6 +104,7 @@ void main (void)
   init_alonzo ();
   lambdachip_start (load_lef_from_file);
 #else
+  //#  error "what?!"
   printk ("FATAL: LambdaChip was incorrectly configured, please check your "
           "config!\n");
   panic ("PANIC!");
