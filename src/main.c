@@ -102,7 +102,8 @@ void main (void)
 
 #if defined BOARD_LAMBDACHIP_ALONZO
   init_alonzo ();
-  lambdachip_start (load_lef_from_file);
+  struct LEF_Loader loader = {.filename = NULL, .loader = load_lef_from_file};
+  lambdachip_start (&loader);
 #else
   //#  error "what?!"
   printk ("FATAL: LambdaChip was incorrectly configured, please check your "
