@@ -72,7 +72,7 @@ static void init_alonzo (void)
 }
 #endif
 
-static lef_t load_lef_from_tf (void)
+static lef_t load_lef_from_tf (const char *filename)
 {
   lef_t lef = NULL;
 
@@ -82,7 +82,7 @@ static lef_t load_lef_from_tf (void)
       return NULL;
     }
 
-  lef = load_lef_from_file (DEFAULT_LEF);
+  lef = load_lef_from_file (filename);
 
   return lef;
 }
@@ -102,7 +102,8 @@ void main (void)
 
 #if defined CONFIG_BOARD_LAMBDACHIP_ALONZO
   init_alonzo ();
-  struct LEF_Loader loader = {.filename = NULL, .loader = load_lef_from_file};
+  struct LEF_Loader loader
+    = {.filename = DEFAULT_LEF, .loader = load_lef_from_tf};
   lambdachip_start (&loader);
 #else
   //#  error "what?!"
