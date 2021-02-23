@@ -38,7 +38,7 @@ GLOBAL_DEF (struct device *, dev_led1) = NULL;
 GLOBAL_DEF (struct device *, dev_led2) = NULL;
 GLOBAL_DEF (struct device *, dev_led3) = NULL;
 
-#if defined BOARD_LAMBDACHIP_ALONZO
+#if defined CONFIG_BOARD_LAMBDACHIP_ALONZO
 static void init_alonzo (void)
 {
   const struct device *dev_led0 = GLOBAL_REF (dev_led0);
@@ -100,7 +100,7 @@ void main (void)
    */
   printk ("Platform: zephyr on %s\n", CONFIG_BOARD);
 
-#if defined BOARD_LAMBDACHIP_ALONZO
+#if defined CONFIG_BOARD_LAMBDACHIP_ALONZO
   init_alonzo ();
   struct LEF_Loader loader = {.filename = NULL, .loader = load_lef_from_file};
   lambdachip_start (&loader);
