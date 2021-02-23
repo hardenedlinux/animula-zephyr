@@ -41,29 +41,24 @@ GLOBAL_DEF (struct device *, dev_led3) = NULL;
 #if defined CONFIG_BOARD_LAMBDACHIP_ALONZO
 static void init_alonzo (void)
 {
-  const struct device *dev_led0 = GLOBAL_REF (dev_led0);
-  const struct device *dev_led1 = GLOBAL_REF (dev_led1);
-  const struct device *dev_led2 = GLOBAL_REF (dev_led2);
-  const struct device *dev_led3 = GLOBAL_REF (dev_led3);
-
-  dev_led0 = device_get_binding (LED0);
-  dev_led1 = device_get_binding (LED1);
-  dev_led2 = device_get_binding (LED2);
-  dev_led3 = device_get_binding (LED3);
+  GLOBAL_SET (dev_led0, device_get_binding (LED0));
+  GLOBAL_SET (dev_led1, device_get_binding (LED1));
+  GLOBAL_SET (dev_led2, device_get_binding (LED2));
+  GLOBAL_SET (dev_led3, device_get_binding (LED3));
 
   /* Set LED pin as output */
-  assert (
-    gpio_pin_configure (dev_led0, LED0_PIN, GPIO_OUTPUT_ACTIVE | LED0_FLAGS)
-    >= 0);
-  assert (
-    gpio_pin_configure (dev_led1, LED1_PIN, GPIO_OUTPUT_ACTIVE | LED1_FLAGS)
-    >= 0);
-  assert (
-    gpio_pin_configure (dev_led2, LED2_PIN, GPIO_OUTPUT_ACTIVE | LED2_FLAGS)
-    >= 0);
-  assert (
-    gpio_pin_configure (dev_led3, LED3_PIN, GPIO_OUTPUT_ACTIVE | LED3_FLAGS)
-    >= 0);
+  assert (gpio_pin_configure (GLOBAL_REF (dev_led0), LED0_PIN,
+                              GPIO_OUTPUT_ACTIVE | LED0_FLAGS)
+          >= 0);
+  assert (gpio_pin_configure (GLOBAL_REF (dev_led1), LED1_PIN,
+                              GPIO_OUTPUT_ACTIVE | LED1_FLAGS)
+          >= 0);
+  assert (gpio_pin_configure (GLOBAL_REF (dev_led2), LED2_PIN,
+                              GPIO_OUTPUT_ACTIVE | LED2_FLAGS)
+          >= 0);
+  assert (gpio_pin_configure (GLOBAL_REF (dev_led3), LED3_PIN,
+                              GPIO_OUTPUT_ACTIVE | LED3_FLAGS)
+          >= 0);
 
   gpio_pin_set (GLOBAL_REF (dev_led0), LED0_PIN, 1);
   gpio_pin_set (GLOBAL_REF (dev_led1), LED1_PIN, 1);
