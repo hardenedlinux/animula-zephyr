@@ -38,10 +38,10 @@ GLOBAL_DEF (struct device *, dev_led1) = NULL;
 GLOBAL_DEF (struct device *, dev_led2) = NULL;
 GLOBAL_DEF (struct device *, dev_led3) = NULL;
 
-super_device super_dev_led0 = {0};
-super_device super_dev_led1 = {0};
-super_device super_dev_led2 = {0};
-super_device super_dev_led3 = {0};
+GLOBAL_DEF (super_device, super_dev_led0) = {0};
+GLOBAL_DEF (super_device, super_dev_led1) = {0};
+GLOBAL_DEF (super_device, super_dev_led2) = {0};
+GLOBAL_DEF (super_device, super_dev_led3) = {0};
 
 #if defined CONFIG_BOARD_LAMBDACHIP_ALONZO
 static void init_alonzo (void)
@@ -51,14 +51,14 @@ static void init_alonzo (void)
   GLOBAL_SET (dev_led2, device_get_binding (LED2));
   GLOBAL_SET (dev_led3, device_get_binding (LED3));
 
-  super_dev_led0.dev = GLOBAL_REF (dev_led0);
-  super_dev_led0.gpio_pin = LED0_PIN;
-  super_dev_led1.dev = GLOBAL_REF (dev_led1);
-  super_dev_led1.gpio_pin = LED1_PIN;
-  super_dev_led2.dev = GLOBAL_REF (dev_led2);
-  super_dev_led2.gpio_pin = LED2_PIN;
-  super_dev_led3.dev = GLOBAL_REF (dev_led3);
-  super_dev_led3.gpio_pin = LED3_PIN;
+  (GLOBAL_REF (super_dev_led0)).dev = GLOBAL_REF (dev_led0);
+  (GLOBAL_REF (super_dev_led0)).gpio_pin = LED0_PIN;
+  (GLOBAL_REF (super_dev_led1)).dev = GLOBAL_REF (dev_led1);
+  (GLOBAL_REF (super_dev_led1)).gpio_pin = LED1_PIN;
+  (GLOBAL_REF (super_dev_led2)).dev = GLOBAL_REF (dev_led2);
+  (GLOBAL_REF (super_dev_led2)).gpio_pin = LED2_PIN;
+  (GLOBAL_REF (super_dev_led3)).dev = GLOBAL_REF (dev_led3);
+  (GLOBAL_REF (super_dev_led3)).gpio_pin = LED3_PIN;
 
   /* Set LED pin as output */
   assert (gpio_pin_configure (GLOBAL_REF (dev_led0), LED0_PIN,
