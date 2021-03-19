@@ -98,9 +98,6 @@ static lef_t load_lef_from_tf (const char *filename)
 
 void main (void)
 {
-  // set BLE module to transparent send mode
-  printk ("\r\nAT+AUTO+++=Y\r\n");
-
   /* TODO:
    * 1. Add a REPL shell (include an interpreter)
    * 2. Load file from storage
