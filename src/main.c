@@ -74,10 +74,10 @@ static void init_alonzo (void)
                               GPIO_OUTPUT_ACTIVE | LED3_FLAGS)
           >= 0);
 
-  gpio_pin_set (GLOBAL_REF (dev_led0), LED0_PIN, 1);
-  gpio_pin_set (GLOBAL_REF (dev_led1), LED1_PIN, 1);
-  gpio_pin_set (GLOBAL_REF (dev_led2), LED2_PIN, 1);
-  gpio_pin_set (GLOBAL_REF (dev_led3), LED3_PIN, 1);
+  gpio_pin_set (GLOBAL_REF (dev_led0), LED0_PIN, 0);
+  gpio_pin_set (GLOBAL_REF (dev_led1), LED1_PIN, 0);
+  gpio_pin_set (GLOBAL_REF (dev_led2), LED2_PIN, 0);
+  gpio_pin_set (GLOBAL_REF (dev_led3), LED3_PIN, 0);
 }
 #endif
 
