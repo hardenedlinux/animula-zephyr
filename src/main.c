@@ -24,10 +24,11 @@ GLOBAL_DEF (bool, vm_verbose) = true;
 GLOBAL_DEF (bool, vm_execute) = false;
 
 /* TODO:
- * Configure these size when building
+ * 1. Configure these size when building.
+ * 2. Detect CODESEG and DATASEG according from the LEF.
  */
 GLOBAL_DEF (size_t, VM_CODESEG_SIZE) = 8192;
-GLOBAL_DEF (size_t, VM_DATASEG_SIZE) = 0;
+GLOBAL_DEF (size_t, VM_DATASEG_SIZE) = 2048;
 GLOBAL_DEF (size_t, VM_STKSEG_SIZE) = 1024;
 
 #define DEFAULT_LEF "/SD:/program.lef"
