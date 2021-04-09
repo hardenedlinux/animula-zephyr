@@ -50,6 +50,7 @@ GLOBAL_DEF (struct device *, dev_gpio_pb15) = NULL;
 GLOBAL_DEF (struct device *, dev_gpio_pb14) = NULL;
 GLOBAL_DEF (struct device *, dev_gpio_pb13) = NULL;
 GLOBAL_DEF (struct device *, dev_gpio_pb12) = NULL;
+GLOBAL_DEF (struct device *, dev_gpio_ble_disable) = NULL;
 
 GLOBAL_DEF (struct device *, dev_i2c2) = NULL;
 GLOBAL_DEF (struct device *, dev_i2c3) = NULL;
@@ -106,6 +107,7 @@ static void init_alonzo (void)
   GLOBAL_SET (dev_gpio_pb14, device_get_binding (GPIO_PB14));
   GLOBAL_SET (dev_gpio_pb13, device_get_binding (GPIO_PB13));
   GLOBAL_SET (dev_gpio_pb12, device_get_binding (GPIO_PB12));
+  GLOBAL_SET (dev_gpio_ble_disable, device_get_binding (BLEDISABLE));
 
   GLOBAL_SET (dev_i2c2, device_get_binding (DT_LABEL (DT_NODELABEL (i2c2))));
   GLOBAL_SET (dev_i2c3, device_get_binding (DT_LABEL (DT_NODELABEL (i2c3))));
@@ -215,6 +217,11 @@ static void init_alonzo (void)
   dev->dev = GLOBAL_REF (dev_gpio_pb12);
   dev->type = SUPERDEVICE_TYPE_GPIO_PIN;
   dev->gpio_pin = GPIO_PB12_PIN;
+
+  dev = &(GLOBAL_REF (super_dev_gpio_ble_disable));
+  dev->dev = GLOBAL_REF (dev_gpio_ble_disable);
+  dev->type = SUPERDEVICE_TYPE_GPIO_PIN;
+  dev->gpio_pin = BLEDISABLE_PIN;
 
   dev = &(GLOBAL_REF (super_dev_i2c2));
   dev->dev = GLOBAL_REF (dev_i2c2);
