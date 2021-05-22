@@ -76,6 +76,7 @@ GLOBAL_DEF (super_device, super_dev_gpio_pb15) = {0};
 GLOBAL_DEF (super_device, super_dev_gpio_pb14) = {0};
 GLOBAL_DEF (super_device, super_dev_gpio_pb13) = {0};
 GLOBAL_DEF (super_device, super_dev_gpio_pb12) = {0};
+GLOBAL_DEF (super_device, super_dev_gpio_ble_disable) = {0};
 
 GLOBAL_DEF (super_device, super_dev_i2c2) = {0};
 GLOBAL_DEF (super_device, super_dev_i2c3) = {0};
