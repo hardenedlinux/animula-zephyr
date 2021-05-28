@@ -273,7 +273,7 @@ void main (void)
    * 3. Add a special naming convention, if VM detect them then autorun
    * 4. Add online DEBUG
    */
-  printk ("Platform: zephyr on %s\n", CONFIG_BOARD);
+  os_printk ("Platform: zephyr on %s\n", CONFIG_BOARD);
 
 #if defined CONFIG_BOARD_LAMBDACHIP_ALONZO
   init_alonzo ();
@@ -282,8 +282,8 @@ void main (void)
   lambdachip_start (&loader);
 #else
   //#  error "what?!"
-  printk ("FATAL: LambdaChip was incorrectly configured, please check your "
-          "config!\n");
+  os_printk ("FATAL: LambdaChip was incorrectly configured, please check your "
+             "config!\n");
   panic ("PANIC!");
 #endif
 }
