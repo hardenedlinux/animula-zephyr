@@ -237,6 +237,9 @@ static void init_alonzo (void)
   /* Do not configure multi function GPIO pins */
   /* Set LED pin as output */
   /* I2C and SPI are configured automatically when system boots */
+  /* gpio_pin_set is not required, gpio pins are automatically */
+  /* initialized during system start */
+
   assert (gpio_pin_configure (GLOBAL_REF (dev_led0), LED0_PIN,
                               GPIO_OUTPUT_ACTIVE | LED0_FLAGS)
           >= 0);
@@ -250,6 +253,10 @@ static void init_alonzo (void)
                               GPIO_OUTPUT_ACTIVE | LED3_FLAGS)
           >= 0);
 
+  assert (gpio_pin_configure (GLOBAL_REF (dev_gpio_pb5), GPIO_PB5_PIN,
+                              GPIO_OUTPUT_ACTIVE | GPIO_PB5_FLAGS)
+          >= 0);
+
   assert (gpio_pin_configure (GLOBAL_REF (dev_gpio_pb6), GPIO_PB6_PIN,
                               GPIO_OUTPUT_ACTIVE | GPIO_PB6_FLAGS)
           >= 0);
@@ -258,10 +265,17 @@ static void init_alonzo (void)
                               GPIO_OUTPUT_ACTIVE | GPIO_PB7_FLAGS)
           >= 0);
 
-  gpio_pin_set (GLOBAL_REF (dev_led0), LED0_PIN, 0);
-  gpio_pin_set (GLOBAL_REF (dev_led1), LED1_PIN, 0);
-  gpio_pin_set (GLOBAL_REF (dev_led2), LED2_PIN, 0);
-  gpio_pin_set (GLOBAL_REF (dev_led3), LED3_PIN, 0);
+  assert (gpio_pin_configure (GLOBAL_REF (dev_gpio_pb8), GPIO_PB8_PIN,
+                              GPIO_OUTPUT_ACTIVE | GPIO_PB8_FLAGS)
+          >= 0);
+
+  assert (gpio_pin_configure (GLOBAL_REF (dev_gpio_pb9), GPIO_PB9_PIN,
+                              GPIO_OUTPUT_ACTIVE | GPIO_PB9_FLAGS)
+          >= 0);
+
+  assert (gpio_pin_configure (GLOBAL_REF (dev_gpio_ble_disable), BLEDISABLE_PIN,
+                              GPIO_OUTPUT_ACTIVE | BLEDISABLE_FLAGS)
+          >= 0);
 }
 #endif
 
