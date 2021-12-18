@@ -276,6 +276,15 @@ static void init_alonzo (void)
   assert (gpio_pin_configure (GLOBAL_REF (dev_gpio_ble_disable), BLEDISABLE_PIN,
                               GPIO_OUTPUT_ACTIVE | BLEDISABLE_FLAGS)
           >= 0);
+
+  // pins are enable automatically when configuring devices from device tree
+  // need to reverse output values manually
+  gpio_pin_set (GLOBAL_REF (dev_led0), LED0_PIN, 0); // set LED_0 off
+  gpio_pin_set (GLOBAL_REF (dev_led1), LED1_PIN, 0); // set LED_1 off
+  gpio_pin_set (GLOBAL_REF (dev_led2), LED2_PIN, 0); // set LED_2 off
+  gpio_pin_set (GLOBAL_REF (dev_led3), LED3_PIN, 0); // set LED_3 off
+  gpio_pin_set (GLOBAL_REF (dev_gpio_ble_disable), BLEDISABLE_PIN,
+                0); // enable BLE
 }
 #endif
 
