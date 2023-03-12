@@ -1,11 +1,11 @@
 /*  Copyright (C) 2020-2021
  *        "Mu Lei" known as "NalaGinrut" <NalaGinrut@gmail.com>
- *  LambdaChip is free software: you can redistribute it and/or modify
+ *  Animula is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as
  *  published by the Free Software Foundation, either version 3 of the
  *  License, or  (at your option) any later version.
 
- *  LambdaChip is distributed in the hope that it will be useful,
+ *  Animula is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Lesser General Public License for more details.
@@ -15,7 +15,7 @@
  *  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "lambdachip.h"
+#include "animula.h"
 #include "vos.h"
 #include <sys/printk.h>
 #include <zephyr.h>
@@ -82,7 +82,7 @@ GLOBAL_DEF (super_device, super_dev_gpio_ble_disable) = {0};
 GLOBAL_DEF (super_device, super_dev_i2c2) = {0};
 GLOBAL_DEF (super_device, super_dev_i2c3) = {0};
 
-#if defined CONFIG_BOARD_LAMBDACHIP_ALONZO
+#if defined CONFIG_BOARD_ANIMULA_ALONZO
 static void init_alonzo (void)
 {
   GLOBAL_SET (dev_led0, device_get_binding (LED0));
@@ -317,10 +317,10 @@ void main (void)
   init_alonzo ();
   struct LEF_Loader loader
     = {.filename = DEFAULT_LEF, .loader = load_lef_from_tf};
-  lambdachip_start (&loader);
+  animula_start (&loader);
 #else
-  //#  error "what?!"
-  os_printk ("FATAL: LambdaChip was incorrectly configured, please check your "
+  // #  error "what?!"
+  os_printk ("FATAL: Animula was incorrectly configured, please check your "
              "config!\n");
   panic ("PANIC!");
 #endif
