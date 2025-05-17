@@ -2,3 +2,7 @@
 build
 ideas
 *.lo
+.west/
+CMakeCache.txt
+CMakeFiles/
+*.log

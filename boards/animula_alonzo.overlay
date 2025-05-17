@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2020-2021 Animula
+ * Copyright (c) 2025 HardenedLinux Animula
  *
  * SPDX-License-Identifier: Apache-2.0
  */
 
-/* /dts-v1/;
-#include <st/f4/stm32f411Xe.dtsi>
-#include <st/f4/stm32f411r(c-e)tx-pinctrl.dtsi> */
+// /dts-v1/;
+//#include <st/f4/stm32f411Xe.dtsi>
+//#include <st/f4/stm32f411r(c-e)tx-pinctrl.dtsi> 
 /* #include "arduino_r3_connector.dtsi" */
 
 /* Alonzo v0.0.5 */
@@ -20,4 +20,3 @@
 		zephyr,shell-uart = &usart2;
 	};
 };
-
