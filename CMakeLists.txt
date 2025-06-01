@@ -7,8 +7,8 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(animula-zephyr)
 
 zephyr_compile_definitions(ANIMULA_DEBUG)
-zephyr_compile_definitions(ANIMULA_ZEPHYR, CONFIG_DEPRECATED_ZEPHYR_INT_TYPES)
-zephyr_library_compile_options(-Wall -Wno-unused -Wextra
+zephyr_compile_definitions(ANIMULA_ZEPHYR, USE_TINY_GC, CONFIG_BOARD_LAMBDACHIP_ALONZO, CONFIG_DEPRECATED_ZEPHYR_INT_TYPES)
+zephyr_library_compile_options(-Wall -Wextra -Wno-unused
   -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -Wno-pointer-arith
   -fdiagnostics-color=always -Wno-strict-aliasing -Wno-discarded-qualifiers)
 

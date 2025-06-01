@@ -319,7 +319,7 @@ void main (void)
     = {.filename = DEFAULT_LEF, .loader = load_lef_from_tf};
   animula_start (&loader);
 #else
-  // #  error "what?!"
+#  error "what?!"
   os_printk ("FATAL: Animula was incorrectly configured, please check your "
              "config!\n");
   panic ("PANIC!");
